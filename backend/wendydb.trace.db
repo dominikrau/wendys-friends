@@ -1,0 +1,6 @@
+2020-04-10 01:18:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "NAME VARCHAR(255)": "'ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo... (5447)"; SQL statement:
+INSERT INTO Owner (name, created_at, updated_at) VALUES (?,?,?); [22001-200]
+2020-04-10 01:24:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "NAME VARCHAR(255)": "'KonkooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooKonkooooooooooooooooooooooooooooooooooooooooooooooooooo... (1584)"; SQL statement:
+UPDATE Horse set name=?, ownerId=?, rating=?, birthDate=?, description=?, updated_at=?, breed=? where id=?; [22001-200]

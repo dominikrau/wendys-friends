@@ -1,0 +1,49 @@
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ errorMessage }}
+  <button type="button" (click)="vanishError()" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <div class="form-group">
+    <h2>Save new owner</h2>
+    <label for="name">Owner name</label>
+    <input type="text" [(ngModel)]="owner.name" class="form-control" id="name" name="name" placeholder="Enter your name" required #name="ngModel">
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Submit</button>
+</form>
+
+<div class="jumbotron">
+  <div class="card">
+    <div class="search-owner">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchTerm" autocomplete="off" placeholder="&#61442;  Search an owner by name">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Owner</h5>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Created</th>
+          <th scope="col">Updated</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let owner of owners">
+          <th scope="row">{{owner.id}}</th>
+          <th scope="row">{{owner.name}}</th>
+          <th scope="row">{{owner.createdAt}}</th>
+          <th scope="row">{{owner.updatedAt}}</th>
+          <td><button class="btn btn-info" (click)="openDialog(owner)">Edit</button></td>
+          <td><button class="btn btn-danger" (click)="deleteOwner(owner.id)">Delete</button> </td>
+          <td><button class="btn btn-info" (click)="openHorsesDialog(owner.id)">Horses</button> </td>
+          <td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

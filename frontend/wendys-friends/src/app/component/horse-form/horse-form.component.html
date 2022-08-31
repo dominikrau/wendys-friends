@@ -1,0 +1,70 @@
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+   {{ errorMessage }}
+  <button type="button" (click)="vanishError()" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="container">
+  <h1>Welcome to Wendy's Friends</h1>
+  <div class="jumbotron">
+    <button class="btn btn-info" (click)="openAddHorseDialog()">Add horse</button>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Horses</h5>
+        <div class="search-horse">
+          <label>Search by name</label>
+          <input class="form-control" type="text" name="search-name" [(ngModel)]="nameSearchTerm" autocomplete="off" placeholder="&#61442;  Search horse by name">
+          <label>Search by description</label>
+          <input class="form-control" type="text" name="search-description" [(ngModel)]="descriptionSearchTerm" autocomplete="off" placeholder="&#61442;  Search horse by description">
+          <label>Search by rating</label>
+          <select id="search-rating" [(ngModel)]="ratingSearchTerm" class="form-control" name="search-rating">
+            <option></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+            <label>Date born before</label>
+          <input type="date" [(ngModel)]="dateSearchTerm" class="form-control" name="dateSearchTerm" id="dateSearchTerm">
+          <label>Search by breed</label>
+          <select id="search-breed" [(ngModel)]="breedSearchTerm" class="form-control" name="search-breed">
+          <option></option>
+          <option>ARABIAN</option>
+          <option>MORGAN</option>
+          <option>PAINT</option>
+          <option>APPALOOSA</option>
+        </select>
+          <button class="btn btn-info" (click)="searchHorses(this.nameSearchTerm, this.descriptionSearchTerm, this.ratingSearchTerm, this.dateSearchTerm, this.breedSearchTerm)">Search</button>
+        </div>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Owner name</th>
+            <th scope="col">Horse name</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Birth-date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Breed</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let horse of horses">
+            <th scope="row">{{horse.ownerDto.name}}</th>
+            <th scope="row">{{horse.name}}</th>
+            <td>{{horse.rating}}</td>
+            <td>{{horse.birthDate}}</td>
+            <td>{{horse.description}}</td>
+            <td>{{horse.breed}}</td>
+            <td><button class="btn btn-info" (click)="openDialog(horse)">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="deleteHorse(horse.id)">Delete</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+

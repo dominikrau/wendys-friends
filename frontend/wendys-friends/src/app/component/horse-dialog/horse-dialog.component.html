@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Edit horse</h2>
+<mat-dialog-content>
+
+</mat-dialog-content>
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error! </strong> {{ errorMessage }}
+</div>
+
+<div class="form-group">
+  <p>Created: {{horse.createdAt}}</p>
+  <p>Updated: {{horse.updatedAt}}</p>
+  <p>ID: {{horse.id}}</p>
+  <label for="name">Edit horse name</label>
+  <input type="text" [(ngModel)]="horse.name"  class="form-control" id="name" name="name" placeholder="Enter your name" required #name="ngModel">
+  <label for="name">Edit owner</label>
+  <input type="text" [(ngModel)]="horse.ownerDto.name"  class="form-control" id="ownerId" name="ownerId" placeholder="Enter ownerId" required #ownerId="ngModel">
+  <label for="name">Edit rating</label>
+  <select id="rating" [(ngModel)]="horse.rating" class="form-control" name="rating" required #rating="ngModel">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+  <label for="name">Edit birth date</label>
+  <input type="date" [(ngModel)]="horse.birthDate" class="form-control" name="birthDate" id="birthDate" required #birthDate="ngModel">
+  <label for="name">Edit description</label>
+  <input type="text" [(ngModel)]="horse.description"  class="form-control" id="description" name="description" placeholder="Enter description" #description="ngModel">
+  <label for="breed" >Edit breed</label>
+  <select id="breed" [(ngModel)]="horse.breed" class="form-control" name="search-breed" required #breed="ngModel">
+    <option>ARABIAN</option>
+    <option>MORGAN</option>
+    <option>PAINT</option>
+    <option>APPALOOSA</option>
+  </select>
+</div>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="save()">Save</button>
+  <button mat-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

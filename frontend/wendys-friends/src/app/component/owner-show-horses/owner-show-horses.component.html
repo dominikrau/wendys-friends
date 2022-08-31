@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Owner name</th>
+    <th scope="col">HorseId</th>
+    <th scope="col">Name</th>
+    <th scope="col">Rating</th>
+    <th scope="col">Birth-date</th>
+    <th scope="col">Description</th>
+    <th scope="col">Breed</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let horse of horses">
+    <th scope="row">{{horse.ownerDto.name}}</th>
+    <th scope="row">{{horse.id}}</th>
+    <th scope="row">{{horse.name}}</th>
+    <td>{{horse.rating}}</td>
+    <td>{{horse.birthDate}}</td>
+    <td>{{horse.description}}</td>
+    <td>{{horse.breed}}</td>
+  </tr>
+  </tbody>
+</table>
